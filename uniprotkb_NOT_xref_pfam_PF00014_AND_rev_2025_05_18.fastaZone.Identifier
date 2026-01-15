@@ -1,3 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-HostUrl=https://rest.uniprot.org/uniprotkb/stream?download=true&format=fasta&query=%28NOT+%28xref%3Apfam-PF00014%29+AND+%28reviewed%3Atrue%29%29
