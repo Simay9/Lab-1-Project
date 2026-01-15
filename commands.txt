@@ -90,36 +90,34 @@ python3 removing_based_identifiers.py ok_uniprot_kunitz.ids uniprot-kunitz.fasta
 wc ok_uniprot_kunitz.ids 
 python3 removing_based_identifiers.py ok_uniprot_kunitz.ids uniprot-kunitz.fasta >ok_uniprot_kunitz.fasta
 
-#handling not Kunitz testing data
+#Handling not Kunitz testing data
 less uniprot_not-kunitz.fasta
-grep ">" uniprot_not-kunitz.fasta |cut -d "|" -f2|less
 grep ">" uniprot_not-kunitz.fasta |cut -d "|" -f2 >not_kunitz.ids
-wc not_kunitz.ids
-less not_kunitz.ids 
-mv all_kunitz.id all_kunitz.ids
-comm -23 <(sort not_kunitz.ids) <(sort all_kunitz.ids) |wc
-less not_kunitz.ids 
-less all_kunitz.ids 
+
+ 
 comm -23 <(sort not_kunitz.ids) <(sort all_kunitz.ids) >sp_negatives.ids
 pyhton3 removing_based_identifiers.py sp_negatives.ids uniprot_not-kunitz.fasta >sp_negatives.fasta
-grep ">" sp_negatives.fasta
-grep ">" sp_negatives.fasta| wc
+
+#randomly mixing positive and negative data and diving into two
 sort -R ok_kunitz.ids >random_ok_kunitz.ids
 sort -R ok_uniprot_kunitz.ids >random_ok_kunitz.ids
-history
+
 sort -R sp_negatives.ids >random_sp_negatives.ids
 head -n 184 random_ok_kunitz.ids >pos_1.ids
 tail -n 184 random_ok_kunitz.ids >pos_2.ids
-echo "572832/2" |bc
+
 head -n 286416 random_sp_negatives.ids >neg_1.ids
 tail -n 286416 random_sp_negatives.ids >neg_2.ids
 wc neg_* pos_*
+
 wc sp_negatives.id
 wc sp_negatives.ids
 python3 removing_based_identifiers.py pos_1.ids uniprot_not-kunitz.fasta >pos_1.fasta
 python3 removing_based_identifiers.py pos_2.ids uniprot_not-kunitz.fasta >pos_2.fasta
 python3 removing_based_identifiers.py neg_1.ids uniprot_not-kunitz.fasta >neg_1.fasta
 python3 removing_based_identifiers.py neg_2.ids uniprot_not-kunitz.fasta >neg_2.fasta
+
+#HMM search for positive testing data
 ls *.hmm
 hmmsearch pdb_kunitz.hmm pos_1.fasta
 less pos_1.fasta
@@ -128,65 +126,33 @@ less pos_2.fasta
 grep ">" pos_1.ids |wc
 python3 removing_based_identifiers.py pos_1.ids uniprot_not-kunitz.fasta > pos_1.fasta
 less pos_1.fasta
-less pos_1.fasta
-less neg_1.fasta
-less uniprot_not-kunitz.fasta 
-history
-less pos_1.ids
-less uniprot_not-kunitz.fasta 
-less neg_1.fasta
-ls
-cd Lab1project/
-ls
-less neg_1.fasta
-less pos_1.fasta
-pos_1.ids
-less pos_1.ids
-less neg_1.ids
-less pos_1.fasta
-less uniprot_not-kunitz.fasta 
-python3 removing_based_identifiers.py pos_1.ids uniprot_not-kunitz.fasta > pos_1.fasta
-less pos_1.fasta
-ok_uniprot_kunitz.fasta
-less ok_uniprot_kunitz.fasta
-python3 removing_based_identifiers.py pos_1.ids uniprot-kunitz.fasta > pos_1.fasta
-less pos_1.fasta
-grep ">" pos_1.fasta |wc
-python3 removing_based_identifiers.py pos_2.ids uniprot-kunitz.fasta > pos_2.fasta
-grep ">" pos_2.fasta |wc
-less neg_1.fasta
-grep ">" neg_1.fasta |wc
-grep ">" neg_2.fasta |wc
+
 ls *.hmm
 hmmsearch pdb_kunitz.hmm pos_1.fasta
 hmmsearch --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta |less
-less pos_1.out
-hmmsearch --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta
+
 less pos_1.out
 grep -v "^#" pos_1.out |cut -d " " -f1|wc
 hmmsearch --max --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta
 grep -v "^#" pos_1.out |cut -d " " -f1|wc
+
+#HMM search for pos_2.fasta
 hmmsearch --max --tblout pos_2.out pdb_kunitz.hmm pos_2.fasta
 grep -v "^#" pos_2.out |cut -d " " -f1|wc
 hmmsearch -Z 1000 --max --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta
 hmmsearch -Z 1000 --max --tblout pos_2.out pdb_kunitz.hmm pos_2.fasta
 less pos_1.out
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}' |tr " " "\t">pos|1.class
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}' |tr " " "\t">pos_1.class
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t" >pos_1.class
-grep -v "^#" pos_1.out |cut -d " " -f 1,5 |less
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t"|less
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t"
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t" >pos_1.class
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t">pos_1.class
-grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t"
+
 grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t" >pos_1.class
 less pos_1.class
+
 grep -v "^#" pos_2.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t" >pos_2.class
 wc pos_2.class
 wc pos_1.class
 awk '{print $1}' pos_1.class |sort -u |wc
 awk '{print $1}' pos_2.class |sort -u |wc
+
+#HMM seach for negative testing data
 hmmsearch -Z 1000 --max --tblout neg_1.out pdb_kunitz.hmm neg_1.fasta
 hmmsearch -Z 1000 --max --tblout neg_2.out pdb_kunitz.hmm neg_2.fasta
 grep -v "^#" neg_1.out |wc
@@ -196,46 +162,44 @@ grep -v "^#" neg_2.out |awk '{split($1,a,"\|"); print a[2],0,$5,$8}'  |tr " " "\
 less neg_1.class
 less neg_2.class
 comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort)|wc
-comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort) |aawk '{print $1"\t0\t10.0\t10.0"}'|less
 comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort) |awk '{print $1"\t0\t10.0\t10.0"}'|less
 wc neg_1.ids
 wc neg_1.class
 comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort)|wc
+
+#reincluding negative data that model eliminated with an e value threshold of 10
 comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort) |awk '{print $1"\t0\t10.0\t10.0"}'>>neg_1.class
 wc neg_1.class
 wc neg_1.ids
 comm -23 <(sort neg_2.ids) <(cut -f 1 neg_2.class |sort) |awk '{print $1"\t0\t10.0\t10.0"}'>>neg_2.class
 wc neg_2.ids
 wc neg_2.class
+
+#combining pos_1, neg_1 and pos_2, neg_2
 cat pos_1.class neg_1.class >set_1.class
 cat pos_2.class neg_2.class >set_2.class
-pyhton performance.py set_1.class 1e-5
-python performance.py set_1.class 1e-5
-for i in seq 1 12; do python performance.py set_1.class 1e-$i; done
+
+#Applying a performance test to the model 
+
 for i in `seq 1 12 `; do python performance.py set_1.class 1e-$i; done
 for i in `seq 1 12 `; do python performance.py set_2.class 1e-$i ;done
 python performance.py set_1.class 5e-6
 python performance.py set_2.class 5e-6
+
+#best threshold 1e-6 is chosen based on the MCC and applied
 python performance.py  <(cat set_1.class set_2.class) 1e-6
 less pos_1.class
+
+#to determine missclassified structures classes sorted based on full sequence
 sort -gk 3 pos_1.class |less
 sort -grk 3 pos_1.class |less
 sort -grk 3 pos_2.class |less
-history
-/bin/python3 "/home/simay/import matplotlib.py"
-pip install matplotlib
-/bin/python3 "/home/simay/import matplotlib.py"
-mv "/home/simay/import matplotlib.py" "/home/simay/plot_example.py
-sudo apt update
+
+#to visualize performance metrics
+
+
 pip install matplotlib
 /bin/python3 /home/simay/Lab1project/matplotlib.py
 mv matplotlib.py resuly_plots.py
-/bin/python3 /home/simay/Lab1project/results_plots.py
-python3 /home/simay/Lab1project/results_plots.py
 pip install seaborn
 python3 /home/simay/Lab1project/results_plots.py
-
-
-
-
-history | cut -c 8- > commands.txt
