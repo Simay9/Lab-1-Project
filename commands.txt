@@ -1,563 +1,84 @@
-sudo apt update && sudo apt upgrade
-sudo apt install python3
-python3
-ls
-tribi
-python
-python3
-more prova.py
-more prova.py 
-pyhton3
-python3
-pythın3
-maria= input()
-marina = input()
-marina = input
-exit() pyhton3
-pyhton3
-cd
-l 
-l = ['CIAO', 'HELLO', 'HI']
-L=
-L=  ['CIAO', 'HELLO', 'HI']
-l= ['CIAO', 'HELLO', 'HI']
-l= ["CIAO", "HELLO", "HI"]
-docker pull jupyter/datascience-notebook
-docker network create bdb-net
-docker run -d --rm --name my_jupyter --mount
-src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net -
-e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="bdb_password" --user root -e
-CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" jupyter/datascience-notebook
-docker run -d --rm --name my_jupyter --mount src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net - e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="simay" --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" jupyter/datascience-notebook
-'docker run --help'
-docker run -d --rm --name my_jupyter --mount src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="bdb_password" --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" jupyter/datascience-notebook
-docker ps
-docker stop my_jupyter
-docker run
-docker run -d --rm --name my_jupyter --mount src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="bdb_password" --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" --mount src=C:\bdb,dst=/home/jovyan/work,type=bind jupyter/datascience-notebook
-docker run -d --rm --name my_jupyter --mount src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="simay" --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" --mount src=C:\bdb,dst=/home/jovyan/work,type=bind jupyter/datascience-notebook
-docker run my_jupyter
-docker run -d --rm --name my_jupyter --mount src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="bdb_password" --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" --mount src=$HOME/bdb/,dst=/home/jovyan/work,type=bind jupyter/datascience-notebook
-docker stop my_jupyter
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm ~/miniconda3/miniconda.sh
-source ~/miniconda3/bin/activate
-conda init --all
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm ~/miniconda3/miniconda.sh
-source ~/miniconda3/bin/activate
-conda init --all
-conda create --name MP25_env #create the environiment just the first time
-conda activate MP25_env # activate the environiment when doing the practicals
-conda install bioconda::orthofinder
-conda install bioconda::iqtree
-conda install bioconda::phylobayes-mpi
-conda install bioconda::astral-tree
-conda install bioconda::generax
-conda install bioconda::trimal
-conda install bioconda::AMAS
-conda install -c conda-forge -c bioconda phylobayes-mpi
-conda deactivate
-conda activate MP25_env
-conda deactivate
-conda activate MP25_envconda
-conda activate MP25_env #
-conda deactivate
-python --version
-python
-sudo apt update && sudo apt install python3 python3-pip -y
-pip install biopython
-import Bio
-print(Bio.__version__)
-python3
-gith pull https://github.com/for-giobbe/MP25/tree/main
-conda activate
-ls
-git pull https://github.com/for-giobbe/MP25/tree/main
-conda activate MP25_env
-git clone https://github.com/for-giobbe/MP25/tree/main
-git clone https://github.com/for-giobbe/MP25/
-ls
-for file in data/proteoms/*.pep; do grep ">" $file | head -n 3; done
-cd MP25
-for file in data/proteoms/*.pep; do grep ">" $file | head -n 3; done
-ls
-orthofinder -f <proteoms_folder>
-orthofinder
-orthofinder -f <proteoms_folder>
-ls /path/to/proteomes_folder
-ls
-cd data
-ls
-orthofinder -f <proteoms_folder>
-orthofinder -f ./data/proteomes_folder
-cd -
-orthofinder -f data/proteoms
--s blast
-orthofinder -s blast
-orthofinder -S blast -f data/proteoms/
-orthofinder -o Analyses/My_Orthology.Inference -f Data/Proteoms
-mkdir Anaysis
-ls
-rmdir Anaysis
-LS
-ls
-mkdir Analyses
-orthofinder -o Analyses/My_Orthology.Inference -f Data/Proteoms
-orthofinder -o Analyses/My_Orthology.Inference -f data/proteoms
-orthofinder -S blast -f data/proteoms
-conda activate MP_25
-conda activate MP25_env
-LS
-ls
-cd MP25
-ls
-cd Anaylses
-cd data
-ls
-ls proteoms
-cd OrthoFinder
-orthofinder -o whatever -f
-orthofinder -o whatever -f data/proteoms/
-orthofinder -o whatever -f data/proteoms/ -S blast
-orthofinder -f data/proteoms/ -S blast
-for file in data/proteoms/*.pep; do grep ">" $file | head -n 3; orthofinder -f data/proteoms; orthofinder -S blast -f data/proteoms/; orthofinder -o whatever -f data/proteoms/ -S blast; cd -
-conda activate MP25_env
-orthofinder -o whatever -f data/proteoms/ -S blast
-ls
-cd MP25
-orthofinder -o whatever -f data/proteoms/ -S blast
-orthofinder -f data/proteoms/ -S blast
-orthofinder -o Analyses/My_Orthology.Inference -f Data/Proteoms
-cd Analyses
-ls
-cd My_Orthology.Inference
-ls
-cd Results_Mar11/
-ls
-cd WorkingDirectory/
-ls
-cd dependencies/
-ls
-cd Species0.fa
-cd Log.txt
-cd ..
-ls
-cd Log.txt
-cd ..
-ls
-cd data
-ls
-cd proteoms
-ls
-cd OrthoFinder/
-ls
-cd Results_Mar13
-ls
-cd Species_Tree/
-ls
-cat SpeciesTree_rooted.txt
-cat data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.fa
-cd ..
-cat data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.fa
-cd ..
-cat data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.fa
-mafft --auto data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.fa > data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.aln
-mafft --auto --op 7 data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.fa > data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.op7.aln
-Gblocks data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.aln -t=p -b4=5 -b5=a
-conda install -c bioconda gblocks
-Gblocks data/Single_Copy_Orthologue_Sequences/N0.HOG0000020.aln -t=p -b4=5 -b5=a
-conda deactivate
-conda activate MP25_env
-AMAS.py concat -i data/example_alignements/*ref.aln -f fasta -d aa --part-format nexus
-mv concatenated.out  data/example_alignements/concatenated.out
-mv partitions.txt  data/example_alignements/partitions.txt
-AMAS.py concat -i data/example_alignements/*ref.aln -f fasta -d aa --part-format nexus
-mv concatenated.out  data/example_alignements/concatenated.out
-mv partitions.txt  data/example_alignements/partitions.txt
-cd MP25
-AMAS.py concat -i data/example_alignements/*ref.aln -f fasta -d aa --part-format nexus
-mv concatenated.out  data/example_alignements/concatenated.out
-mv partitions.txt  data/example_alignements/partitions.txt
-iqtree -s data/example_alignements/concatenated.out -Q data/example_alignements/partitions.txt -m TESTONLY --prefix edge-unlinked
-iqtree -s data/example_alignements/concatenated.out -q data/example_alignements/partitions.txt -m TESTONLY --prefix edge-linked
-iqtree -s data/example_alignements/concatenated.out -Q data/example_alignements/partitions.txt -m MFP -rcluster 10
-AMAS.py convert -d dna -u nexus -f fasta -i data/example_alignements/Rhabdomeric1.nt.aln
-mpirun -np 2 pb_mpi -d Rhabdomeric1.nt.aln-out.phy chain1
-bpcomp Rhabd1 Rhabd2
-tracecomp
-tracecomp Rhabd1 Rhabd2
-conda activate MP25_env
-cd MP25
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR 
---prefix data/example_alignements/nt/Rhabdomeric1.nt
-ls
-cd data
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR 
---prefix data/example_alignements/nt/Rhabdomeric1.nt
-cd ...
-...
-cd...
-ls
-cd example_alignements/
-LS
-ls
-cd Rhabdomeric1.nt.aln
-cat Rhabdomeric1.nt.aln
-conda activate MP25_env
-cd MP25
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR 
---prefix data/example_alignements/nt/Rhabdomeric1.nt
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR --prefix data/example_alignements/nt/Rhabdomeric1.nt
-git pull
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR --prefix data/example_alignements/nt/Rhabdomeric1.nt
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -b 100 --prefix data/example_alignements/nt/nonparamet_bootstrap  -t data/example_alignements/nt/Rhabdomeric1.nt.nwk --tree-fix
-iqtree -h
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -b 100 --prefix data/example_alignements/nt/nonparamet_bootstrap  -t data/example_alignements/nt/Rhabdomeric1.nt.nwk --tree-fix
-cd data
-ls
-cd  example_alignements
-ls
-cd ..
-iqtree -s data/example_alignements/Rhabdomeric1.nt.aln -m GTR -B 1000 --prefix data/example_alignements/parametric_bootstrap
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -B 1000 --prefix data/example_alignements/nt/parametric_bootstrap
-cd MP25
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -b 100 --prefix data/example_alignements/nt/nonparamet_bootstrap -t data/example_alignements/nt/Rhabdomeric1.nt.treefile --tree-fix
-cat iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -b 100 --prefix data/example_alignements/nt/nonparamet_bootstrap -t data/example_alignements/nt/Rhabdomeric1.nt.treefile --tree-fix
-cat data/example_alignements/nt/nonparamet_bootstrap.iqtree
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -B 1000 --prefix data/example_alignements/nt/parametric_bootstrap
-cat  data/example_alignements/nt/parametric_bootstrap.iqtree
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -j 100 --prefix data/example_alignements/nt/nonparamet_jacknife
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -J 1000 --prefix data/example_alignements/nt/parametric_jacknife
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -alrt 1000 --prefix data/example_alignements/nt/alrt
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m GTR -B 1000 -alrt 1000 --prefix data/example_alignements/nt/cobined_supports
-cat data/example_alignements/nt/cobined_supports.iqtree
-iqtree2 -p data/example_alignements/aa --prefix concat
-conda activate MP25_env
-git pull
-cd MP25
-git pull
-iqtree2 -S data/example_alignements/aa --prefix loci
-iqtree -p data/example_alignements/aa -t concat.treefile --gcf loci.treefile --scf 100 --prefix concord
-iqtree -con mytrees -minsup 0.5 -bi 100
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m "MIX{JC,GTR}+G4" -wspmr --prefix mixture
-iqtree -s data/example_alignements/nt/Rhabdomeric1.nt.aln -m MIX+MFP -mset JC,GTR 
--mrate E,I,G,I+G -qmax 5 --prefix mixture
-iqtree -s data/example_alignements/aa/concatenated.out -m LG+G -g example.constrain --prefix constrained
-iqtree -s data/example_alignements/concatenated.out -m LG+G -g data/example_alignments/example.constrain --prefix constrained
-mple.constrain --prefix constrained
-ls
-cd data
-ls
-cd example_alignements/
-ls
-cat example.constrain 
-iqtree -s data/example_alignements/concatenated.out -m LG+G -g data/example_alignements/example.constrain --prefix constrained
-cd..
-cd ..
-iqtree -s data/example_alignements/aa/concatenated.out -m LG+G --prefix unconstrained
-cat *.treefile > trees_to_test.nwk
-iqtree -s data/example_alignements/aa/concatenated.out -z trees_to_test.nwk -m LG+G
-iqtree -s data/example_alignements/concatenated.out -z trees_to_test.nwk -m LG+G
-iqtree -s data/example_alignements/concatenated.out -m LG+G -z trees_to_test.nwk -n 0 -zb 1000 -au
-conda activate MP25_env
-iqtree2 -S data/example_alignements/aa --prefix loci
-iqtree2 -S data/example_alignements/ --prefix loci
-cd MP25
-iqtree2 -S data/example_alignements/aa --prefix loci
-iqtree -t loci.treefile -rf_all
-astral -i loci.treefile
-conda activate MP25_env
-cd MP25
-	qtree -t loci.treefile -rf_all
-	qtree2 -S data/example_alignements/aa --prefix loci
-iqtree2 -S data/example_alignements/--prefix loci
-gitp pull
-gitpull
-gitpull -h
-git pull
-iqtree2 -S data/example_alignements/aa --prefix loci
-iqtree -t loci.treefile -rf_all
-astral -i loci.treefile
-for i in *fa; do mafft $i > $i.aln; done
-iqtree -S data/example_paralogs/ --prefix paralogs
-conda activate MP25_env
-cd MP25
-git pull
-prank -d=Rhabdomeric1.fasta -o=Rhabdomeric1.aln -codon
-sudo apt install prank
-prank -d=Rhabdomeric1.fasta -o=Rhabdomeric1.aln -codon
-ls
-cd data/example_selection/
-ll
-prank -d=Rhabdomeric1.fasta -o=Rhabdomeric1.aln -codon
-/usr/bin/python3 /home/simay/lab1p/make_fasta.py
-python3 make_fasta.py project pdb report.json
-ls
-python3 make_fasta.py report_data_pdb.json
-ls
-grep '>' pdb_fst.fasta
-clear
-grep '>' pdb_fst.fasta |wc
-less pdb_fst.fasta 
-python3 make_fasta.py not_kunitz.json
-ls
-python3 make_fasta.py report_data_pdb.json 
-grep '>' pdb_fst.fasta |wc
-python3 make_fasta.py not_kunitz.json 
-grep '>' not_kunitz.fasta |wc
-pip install biopython
-python3 select_random.py not_kunitz.fasta
-grep '>' not_kunitz_select.fasta |wc
-sudo apt install  cd-hit
-cd-hit -i pdb_fst.fasta  -o kunitz_cdhit.fast
-a -c 0.95 -aL 0.9
-cd-hit -i pdb_fst.fasta -o kunitz_cdhit.fasta -c 0.95 -aL 0.9
-grep '>' kunitz_cdhit.fasta | wc
-less kunitz_cdhit
-less kunitz_cdhit.fasta
-uname
-sudo apt install python3 python3-pip
-sudo apt remove --purge python3 python3-pip
-sudo apt autoremove
-sudo apt update
-sudo apt install python3 python3-pip
-python3 --version
-pip3 --version
-python3 --version
-pip3 --version
-code .
-awk '/^>/ {if (seq && length(seq) >= 20 && length(seq) <= 100) {print head; print seq} head=$0; seq=""} /^[^>]/ {seq = seq $0} END {if (length(seq) >= 20 && length(seq) <= 100) {print head; print seq}}' kunitz_cdhit.fasta > filtered.fasta
-grep '>' kunitz_cdhit.fasta |wc
-sudo apt update 
-sudo apt install clustalo
-clustalo i- filtered.fasta -o kunitz.aligned.fasta --force 
-clustalo -i filtered.fasta -o kunitz.aligned.fasta --force
-less kunitz.aligned.fasta
-grep "^>" filtered.fasta > just-ids.txt
-nano just-ids.txt 
-less just-ids.txt 
-history
-ls *.json
-python3 make_fasta.py report_data_pdb.json 
-cd-hit -i all-chains-kunitz.fasta -o cdhit-all-chains.fasta -c 0.95 -aL 0.9
-grep ">" cdhit-all-chains.fasta |wc
-less cdhit-all-chains.fasta
-awk '/^>/ {if (seq && length(seq) >= 20 && length(seq) <= 100) {print head; print seq} head=$0; seq=""} /^[^>]/ {seq = seq $0} END {if (length(seq) >= 20 && length(seq) <= 100) {print head; print seq}}' cdhit-all-chains.fasta >all-chain- filtered.fasta
-less all-chain
-less all-chain filtered.fasta
-awk '/^>/ {if (seq && length(seq) >= 20 && length(seq) <= 100) {print head; print seq} head=$0; seq=""} /^[^>]/ {seq = seq $0} END {if (length(seq) >= 20 && length(seq) <= 100) {print head; print seq}}' cdhit-all-chains.fasta >all-chain-filtered.fasta
-less all-chain-filtered.fasta
-grep '>' all-chain-filtered.fasta
-grep '>' all-chain-filtered.fasta |wc
-grep "^>" all-chain-filtered.fasta > final-ids.txt
-nano final-ids.txt 
-less all-chain-filtered.fasta 
-less final-ids.txt 
-ls
-ls*.fasta
-ls *.fasta
-less all-chain-filtered.fasta
-grep '>' all-chain-filtered.fasta |wc
-less all-chain-filtered.fasta
-clustalu -i all-chain-filtered.fasta -o final-alignment.fasta --outfmt =fasta
-clustalo -i all-chain-filtered.fasta -o final-alignment.fasta --outfmt =fasta
-clustalo -i all-chain-filtered.fasta -o final-alignment.fasta --outfmt=fasta
-less final-alignment.fasta 
-hmmbuilt first-model.hmm final-alignment.fasta 
-sudo apt install hmmer
-hmmbuilt first-model.hmm final-alignment.fasta 
-hmmbuild first-model.hmm final-alignment.fasta 
-hmm search first-model.hmm uniprot-kunitz.fasta > result1.txt
-hmmsearch first-model.hmm uniprot-kunitz.fasta > result1.txt
-less result1.txt
-grep '>>' result1.txt |wc
-less result1.txt 
-pyhton 3 make_fasta.py not_kunitz.json
-python3 make_fasta.py not_kunitz.json
-grep '>' pdb-not-kunitz-old-chain.fasta |wc
-hmm search first-model.hmm pdb-not-kunitz-old-chain.fasta , result-not-kunitz.txt 
-hmmsearch first-model.hmm pdb-not-kunitz-old-chain.fasta , result-not-kunitz.txt 
-hmmsearch first-model.hmm pdb-not-kunitz-old-chain.fasta > result-not-kunitz.txt 
-grep '>>' result-not-kunitz.txt |wc
-less result-not-kunitz.txt
-history
-ls newtry.fasta
-less newtry.fasta
-python3 report_data_pdb.json  newtry.fasta
-docker search ubuntu
-docker pull ubuntu
-docker run ubuntu echo "hello from the container"
-docker run -i -t ubuntu /bin/bash
-docker stop
-docker stop echo
-echo $SHELL
-/bin/bash
-echo $SHELL
 #!/usr/bin/bash
-ls
-cd Lab1project/
-ls
-cd kunitz_data.csv
-less kunitz_data.csv
-echo $SHELL
-#!/usr/bin/bash
-ls
-cd Lab1project/
-ls
-less kunitz_data.csv
-cat kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |less
-cat kunitz_data.csv
-ls
-cd Lab1project/
-ls
-vi kunitz_data.csv
-ls
-cd Lab1project/
-ls
-cat kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |less
-cat kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |less
-cat kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |less
-less kunitz_data.csv
-cat kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |less
-cat kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2};print name,$3,$4,$5}' |less
-cat kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2;print "TEST:",$2; print name,$3,$4,$5}' |less
-cat kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2;print "TEST:",$2}; print name,$3,$4,$5}' |less
-less kunitz_data.csv
-grep PF00014 kunitz_data.csv |less
-grep PF00014 kunitz_data.csv |wc
-grep PF00014 kunitz_data.csv |cut -d "," -f 2-4 |less
+
+# to convert csv file into fasta file
 cat kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |awk '{print ">"$1"_"$3;print $2}' >pdb_kunitz.fasta
-less pbd_kunitz.fasta
-cat kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |awk '{print ">"$1"_"$3;print $2}'| less
-ls
-cd Lab1project/
-ls
+
 cat pdb_kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |awk '{print ">"$1"_"$3;print $2}'| less
-cat pdb_kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' awk '{print ">"$1"_"$3;print $2}'
+
 less pdb_kunitz.fasta
-cat pdb_kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |less
-cat pdb_kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014|less
-cat pdb_kunitz_data.csv |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |tr -d '"' |less
-less pdb_kunitz.fasta
+
 grep ">" pdb_kunitz.fasta |wc
+
+#installing cd-hit to remve redundancy
 sudo apt install cd-hit
-which cd-hit
 cd-hit -i pdb_kunitz.fasta -o pdb_kunitz.clst
+
+#to see how many clusters are obtained
 grep ">" pdb_kunitz.clst |wc
 grep ">" pdb_kunitz.clst.clst
-ls
+
 less pdb_kunitz.clst.clstr
 clstr2txt.pl pdb_kunitz.clst.clstr |less
-less  pdb_kunitz.clst.clstr
-clstr2txt.pl pdb_kunitz.clst.clstr |less
-cd-hit
-cd-hit-h
-cd-hit -h
-./clstr2txt.pl pdb_kunitz.clst.clstr > pdb_kunitz.clst.txt |less
-brew install brewsci/bio/cd-hit
+
+# listing representative identifiers of the clusters
 perl -v
 wget https://raw.githubusercontent.com/weizhongli/cdhit/master/clstr2txt.pl
-chmod +x clstr2txt.pl
-clstr2txt.pl pdb_kunitz.clst.clstr |less
-./clstr2txt.pl pdb_kunitz.clst.clstr | less
+./clstr2txt.pl pdb_kunitz.clst.clstr > pdb_kunitz.clst.txt |less
 ./clstr2txt.pl pdb_kunitz.clst.clstr | awk '{if ($5==1) print $0}' |less
+
+#removing 20DY_E from dataset
 less pdb_kunitz.clst
 grep ">" pdb_kunitz.clst |less
 grep ">" pdb_kunitz.clst |grep -v 20DY_E |less
-grep ">" pdb_kunitz.clst |grep -v 20DY_E |wc
-grep ">" pdb_kunitz.clst | wc
-grep ">" pdb_kunitz.clst |grep -v 20DY_E |wc
-grep ">" pdb_kunitz.clst |grep -v 20DY_E |less
-ls
-cd Lab1
-cd Lab1project/
-less pdb_kunitz.clst
-grep ">" pdb_kunitz.clst |wc
-grep ">" pdb_kunitz.clst |grep -v 20DY_E|less
-grep ">" pdb_kunitz.clst |grep -v 20DY_E |less
+awk '/^>/ {print_flag = ($0 !~ /20DY_E/)} print_flag' pdb_kunitz_clst.fasta > filtered.fasta
+
+#cluster file converted to fasta for alignment
 mv pdb_kunitz.clst pdb_kunitz_clst.fasta
 less pdb_kunitz_clst.fasta
-grep ">" pdb_kunitz_clst.fasta |grep -v 20DY|E |less
-grep ">" pdb_kunitz_clst.fasta |grep -v 20DY_E |less
-grep ">" pdb_kunitz_clst.fasta |wc
-grep ">" pdb_kunitz_clst.fasta |grep -v 20DY_E |less
-awk '/^>/ {flag = ($0 !~ /20DY_E/)} flag' pdb_kunitz_clst.fasta > filtered.fasta
-less  pdb_kunitz_clst.fasta
-grep ">" pdb_kunitz_clst.fasta |wc
-grep 20DY_E filtered.fasta
-less filtered.fasta
-grep ">" filtered.fasta |wc
-awk '/^>/ {print_flag = ($0 !~ /20DY_E/)} print_flag' pdb_kunitz_clst.fasta > filtered.fasta
-grep ">" filtered.fasta |wc
-less filtered.fasta 
-grep 20DY_E pdb_kunitz_clst.fasta
-awk '/^>/ {print_flag = ($0 !~ /20DY_E/)} print_flag' pdb_kunitz_clst.fasta > filtered.fasta
-less filtered.fasta 
 grep "^>" pdb_kunitz_clst.fasta > pdb_list.txt
 less pdb_list.txt
-nano pdb_list.txt
-less pdb_list.txt 
-ls
-cd Lab1project/
-less pdb_kunitz.fasta
-history
+
+#alignment result obtained from PDBeFold
+#alignment file prepared for HMM
 vi pdb_alignment.ali
-less pdb_alignment.ali
-vi pdb_alignment.ali
-awk '{if (substr($1,1,1)==">" ) {print "\n"toupper($1)} else {printf "%s"c, toupper($1)} }' pdb_alignment.ali |sed s/PDB:// >pdb_kunitz_clean.ali
-vi pdb_kunitz_clean.ali
 awk '{if (substr($1,1,1)==">" ) {print "\n"toupper($1)} else {printf "%s"c, toupper($1)} }' pdb_alignment.ali |sed s/PDB:// |tail -n +2 >pdb_kunitz_clean.ali
 vi pdb_kunitz_clean.ali
+
+#HMM model build
 hmmbuild pdb_kunitz.hmm pdb_kunitz_clean.ali 
-ls
-cd Lab1project/
-ls
-less pdb_kunitz.clst.clstr
-ls
-cd Lab1project/
-vi pdb_kunitz_clean.ali
+
+
 less filtered.fasta 
 less pdb_kunitz.fasta
-less filtered.fasta 
 grep ">" filtered.fasta |wc
-less filtered.fasta 
+
+#from filtered fasta 20DY_5 (too long) and 5JBT (too short) removed 
 vi filtered.fasta 
 vi pdb_kunitz.fasta
 vi filtered.fasta 
 grep ">" pdb_kunitz_clean.fasta
-grep ">" pdb_kunitz_clean_23.fasta
 grep ">" pdb_kunitz_clean_23.fasta |wc
+
+#For testing the model kunitz data obtained from SwissProt
+#handling Kunitz testing data
 less uniprot-kunitz.fasta
 grep ">" uniprot-kunitz.fasta |wc
-makeblastdb -h |less
-sudo apt update
+
+#to remove similar cases
 sudo apt install ncbi-blast+
-blastn -version
 makeblastdb -in uniprot-kunitz.fasta -input_type fasta -dbtype prot -out uniprot-kunitz.fasta
 blastp -query pdb_kunitz_clean_23.fasta -db uniprot-kunitz.fasta -out pdb_kunitz_clean_23.blast -outfmt 7
 less pdb_kunitz_clean_23.blast
-grep -v "^#" pdb_kunitz_clean_23.blast |less
-grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>}95 && $4>=50) print $0}' |less
-grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>}95 && $4>=50) print $2}' |less
-less pdb_kunitz_clean_23.blast
-grep -v "^#" pdb_kunitz_clean_23.blast |less
 grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |less
 grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |sort -u |less
 grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |sort -u > to_remove.ids
 less to_remove.ids
-grep ">" to_remove.ids |wc
-grep '>' to_remove.ids |wc
-less to_remove.ids 
-grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |cut -d"|" -f -2|less
+
 grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |cut -d"|" -f 2|less
 grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |cut -d"|" -f 2 >to_remove.ids
 python3 removing_based_identifiers.py to_remove.ids uniprot-kunitz.fasta |less
 python3 removing_based_identifiers.py to_remove.ids uniprot-kunitz.fasta |grep ">" |wc
+
 grep ">" uniprot-kunitz.fasta |less
 grep ">" uniprot-kunitz.fasta |cut -d "|" -f 2 |wc
 grep ">" uniprot-kunitz.fasta |cut -d "|" -f 2 |less
@@ -568,6 +89,8 @@ comm -23 <(sort all_kunitz.id) <(sort to_remove.ids) >ok_uniprot_kunitz.ids
 python3 removing_based_identifiers.py ok_uniprot_kunitz.ids uniprot-kunitz.fasta |grep ">" |less
 wc ok_uniprot_kunitz.ids 
 python3 removing_based_identifiers.py ok_uniprot_kunitz.ids uniprot-kunitz.fasta >ok_uniprot_kunitz.fasta
+
+#handling not Kunitz testing data
 less uniprot_not-kunitz.fasta
 grep ">" uniprot_not-kunitz.fasta |cut -d "|" -f2|less
 grep ">" uniprot_not-kunitz.fasta |cut -d "|" -f2 >not_kunitz.ids
@@ -711,219 +234,8 @@ mv matplotlib.py resuly_plots.py
 python3 /home/simay/Lab1project/results_plots.py
 pip install seaborn
 python3 /home/simay/Lab1project/results_plots.py
-docker run -i -t ubuntu /bin/bash
-docker ps -a
-docker run -i -t ubuntu /bin/bash
-docker run -v /host/directory:/container/directory
-mkdir -p $HOME/containers/scratch
-cd $HOME/containers/scratch
-docker run -v $HOME/containers/scratch/:/container_data -i -t ubuntu /bin/bash
-la
-docker ps
-docker run -v $HOME/containers/scratch/:/container_data -i -t ubuntu /bin/bash
-docker volume create some-volume
-docker volume ls
-docker volume inspect some-volume
-docker volume rm some-volume
-docker run -i -t --name myname -v some-volume2:/app ubuntu /bin/bash
-docker inspect myname
-docker run -i -t --name myname -v some-volume2:/app ubuntu /bin/bash
-ls
-docker-compose.yml
-exit
-docker run
-docker --version
-ssh-keygen -t ed25519 -C "simayerol@hotmail.com"
-eval "$(ssh-agent -s)"
-: ssh-add /home/simay/.ssh/id_ed25519
-ssh-add /home/simay/.ssh/id_ed25519
-cat /home/simay/.ssh/id_ed25519.pub
-git clone git@github.com:mbkemec/LB2_project_Group_8.git
-ls
-cd LB2_project_Group_8/
-ls
-cd LB2_project_Group_8/
-git pull
-ls
-cd LB2_project_Group_8/
-curl https://rest.uniprot.org/uniprotkb/P12345.json > P12345.json
-curl -I "https://rest.uniprot.org/uniprotkb/search?query=(organism_id:9606)&size=5"
-cat P12345.json
-ssh -i group8/m18/um18/um18_id_rsa um18@m18.lsb.biocomp.unibo.it
-chmod600 group8/m18/um18/um18_id_rsa
-chmod 600 group8/m18/um18/um18_id_rsa
-ssh -i group8/m18/um18/um18_id_rsa um18@m18.lsb.biocomp.unibo.it
-lab2vm
-nano .bashrc
-lab2vm
-nano .bashrc
-lab2vm
-conda install -c conda-forge -c bioconda mmseqs2
-cmatrix
-sudo apt install cmatrix
-cmatrix
-ls
-cd LB2_project_Group_8/
-LS
-ls
-git pull
-ls
-cd data_collection/
-ls
-mmseqs easy-cluster positive.fasta pos-cluster-results tmp --min-seq-id 0.3 -c 0.4 --cov-mode 0 --cluster-mode 1
-ls
-mmseqs easy-cluster negative.fasta neg-cluster-results tmp --min-seq-id 0.3 -c 0.4 --cov-mode 0 --cluster-mode 1
-ls
-cat neg-cluster-results_rep_seq.fasta 
-ls
-pos-cluster-results_rep_seq.fasta filter.py
-filter.py pos-cluster-results_rep_seq.fasta 
-python3 filter.py
-ls
-cd LB2_project_Group_8/
-ls
-cd data_collection/
-cd ..
-git clean -fd
-git pull
-cd data_collection/
-less positive_NR.tsv 
-cd
-cd ..
-ls
-cd simay
-ls
-Lab1project/
-ls
-cd Lab1project/
-ls
-less neg_1.fasta
-cd ..
-ls
-cd LB2_project_Group_8/
-ls
-cd data_collection/
-ls
-cd LB2_project_Group_8/
-git pull
-ls
-cd LB2_project_Group_8/
-git pull
-cd model_training/
-python3 model_creation.py 
-cd..
-cd
-pip install sklearn
-pip3 install sklearn
-pip3 install scikit-learn
-cd LB2_project_Group_8/
-cd model_training/
-pyhton3 model_creation.py 
-python3 model_creation.py 
-ls
-cd LB2_project_Group_8/
-git pull
-ls
-mkdir SVM_optimization
-ls
-git status
-git add.
-git add .
-git commit -a "new file"
-git commit -am "new file"
-git push
-git pull
-git pull origin main --rebase
-cd
-nano .bashrc
-cd LB2_project_Group_8/
-git status
-git clean -fd
-ls
-git pull
-git fetch origin
-git reset --hard origin/main
-git clean -fd
-git pull
-git status
-git rebase --continue
-git pull
-mkdir SVM_optimization
-cd SVM_optimization/
-nano README.md
-cd ..
-git add .
-git commit -am "SVM optimization file added"
-git push
-git pull
-cd LB2_project_Group_8/
-git pull
-cd SVM_optimization/
-python3 feature_selection.py 
-head all_features.tsv 
-git pull
-python3 feature_extraction.py 
-head
-ls
-head all_features.tsv 
-ls
-cd LB2_project_Group_8/
-git pull
-python3 deneme-performance.py 
-ls
-cd data_collection/
-ls
-pwd
-cd
-pwd
-ls
-cd LB2_project_Group_8/
-LS
-ls
-python3 deneme-performance.py 
-ls
-python3 deneme-performance.py 
-ls
-cd data_collection/
-ls
-cd ..
-cd data_visualization/
-ls
-cd ..
-cd model_training/
-ls
-cd ..
-ls
-python3 deneme-performance.py 
-ls
-cd results/
-ls
-ls false_negative_
-head false_negative_motifs.tsv 
-ls false_negative_pswm.png 
-git status
-git clean -fd
-git pull
-ls
-cd Lab1project/
-ls
-less pos_1.class
-less pos_2.class
-ls
-less set_1.class
-cd lab1p/
-ls
-cd ..
-ls
-cd Lab1project/
-ls
-less pos_1.out
-less pos_1.class
-less pos_1.out
-sort -grk 3 pos_1.class |less
-docker run -d --rm --name my_jupyter --mount src=bdb_data,dst=/home/jovyan -p 127.0.0.1:8888:8888 --network bdb-net -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="bdb_password" --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" --mount src=C:\bdb,dst=/home/jovyan/work,type=bind jupyter/datascience-notebook
-python3 hamming.py
-history
-ls
-cd Lab1project/
+
+
+
+
 history | cut -c 8- > commands.txt
