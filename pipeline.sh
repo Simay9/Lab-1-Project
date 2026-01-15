@@ -1,0 +1,205 @@
+#!/usr/bin/bash
+
+# to convert csv file into fasta file
+cat kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |awk '{print ">"$1"_"$3;print $2}' >pdb_kunitz.fasta
+
+cat pdb_kunitz_data.csv |tr -d '"' |awk -F ',' '{if (length($2)>0) {name=$2}; print name,$3,$4,$5}' |grep PF00014 |awk '{print ">"$1"_"$3;print $2}'| less
+
+less pdb_kunitz.fasta
+
+grep ">" pdb_kunitz.fasta |wc
+
+#installing cd-hit to remve redundancy
+sudo apt install cd-hit
+cd-hit -i pdb_kunitz.fasta -o pdb_kunitz.clst
+
+#to see how many clusters are obtained
+grep ">" pdb_kunitz.clst |wc
+grep ">" pdb_kunitz.clst.clst
+
+less pdb_kunitz.clst.clstr
+clstr2txt.pl pdb_kunitz.clst.clstr |less
+
+# listing representative identifiers of the clusters
+perl -v
+wget https://raw.githubusercontent.com/weizhongli/cdhit/master/clstr2txt.pl
+./clstr2txt.pl pdb_kunitz.clst.clstr > pdb_kunitz.clst.txt |less
+./clstr2txt.pl pdb_kunitz.clst.clstr | awk '{if ($5==1) print $0}' |less
+
+#removing 20DY_E from dataset
+less pdb_kunitz.clst
+grep ">" pdb_kunitz.clst |less
+grep ">" pdb_kunitz.clst |grep -v 20DY_E |less
+awk '/^>/ {print_flag = ($0 !~ /20DY_E/)} print_flag' pdb_kunitz_clst.fasta > filtered.fasta
+
+#cluster file converted to fasta for alignment
+mv pdb_kunitz.clst pdb_kunitz_clst.fasta
+less pdb_kunitz_clst.fasta
+grep "^>" pdb_kunitz_clst.fasta > pdb_list.txt
+less pdb_list.txt
+
+#alignment result obtained from PDBeFold
+#alignment file prepared for HMM
+vi pdb_alignment.ali
+awk '{if (substr($1,1,1)==">" ) {print "\n"toupper($1)} else {printf "%s"c, toupper($1)} }' pdb_alignment.ali |sed s/PDB:// |tail -n +2 >pdb_kunitz_clean.ali
+vi pdb_kunitz_clean.ali
+
+#HMM model build
+hmmbuild pdb_kunitz.hmm pdb_kunitz_clean.ali 
+
+
+less filtered.fasta 
+less pdb_kunitz.fasta
+grep ">" filtered.fasta |wc
+
+#from filtered fasta 20DY_5 (too long) and 5JBT (too short) removed 
+vi filtered.fasta 
+vi pdb_kunitz.fasta
+vi filtered.fasta 
+grep ">" pdb_kunitz_clean.fasta
+grep ">" pdb_kunitz_clean_23.fasta |wc
+
+#For testing the model kunitz data obtained from SwissProt
+#handling Kunitz testing data
+less uniprot-kunitz.fasta
+grep ">" uniprot-kunitz.fasta |wc
+
+#to remove similar cases
+sudo apt install ncbi-blast+
+makeblastdb -in uniprot-kunitz.fasta -input_type fasta -dbtype prot -out uniprot-kunitz.fasta
+blastp -query pdb_kunitz_clean_23.fasta -db uniprot-kunitz.fasta -out pdb_kunitz_clean_23.blast -outfmt 7
+less pdb_kunitz_clean_23.blast
+grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |less
+grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |sort -u |less
+grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |sort -u > to_remove.ids
+less to_remove.ids
+
+grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |cut -d"|" -f 2|less
+grep -v "^#" pdb_kunitz_clean_23.blast | awk '{if ($3>=95 && $4>=50) print $2}' |cut -d"|" -f 2 >to_remove.ids
+python3 removing_based_identifiers.py to_remove.ids uniprot-kunitz.fasta |less
+python3 removing_based_identifiers.py to_remove.ids uniprot-kunitz.fasta |grep ">" |wc
+
+grep ">" uniprot-kunitz.fasta |less
+grep ">" uniprot-kunitz.fasta |cut -d "|" -f 2 |wc
+grep ">" uniprot-kunitz.fasta |cut -d "|" -f 2 |less
+grep ">" uniprot-kunitz.fasta |cut -d "|" -f 2 >all_kunitz.id
+comm -23 <(sort all_kunitz.id) <(sort to_remove.ids) |less
+comm -23 <(sort all_kunitz.id) <(sort to_remove.ids) |grep ">" |wc
+comm -23 <(sort all_kunitz.id) <(sort to_remove.ids) >ok_uniprot_kunitz.ids
+python3 removing_based_identifiers.py ok_uniprot_kunitz.ids uniprot-kunitz.fasta |grep ">" |less
+wc ok_uniprot_kunitz.ids 
+python3 removing_based_identifiers.py ok_uniprot_kunitz.ids uniprot-kunitz.fasta >ok_uniprot_kunitz.fasta
+
+#Handling not Kunitz testing data
+less uniprot_not-kunitz.fasta
+grep ">" uniprot_not-kunitz.fasta |cut -d "|" -f2 >not_kunitz.ids
+
+ 
+comm -23 <(sort not_kunitz.ids) <(sort all_kunitz.ids) >sp_negatives.ids
+pyhton3 removing_based_identifiers.py sp_negatives.ids uniprot_not-kunitz.fasta >sp_negatives.fasta
+
+#randomly mixing positive and negative data and diving into two
+sort -R ok_kunitz.ids >random_ok_kunitz.ids
+sort -R ok_uniprot_kunitz.ids >random_ok_kunitz.ids
+
+sort -R sp_negatives.ids >random_sp_negatives.ids
+head -n 184 random_ok_kunitz.ids >pos_1.ids
+tail -n 184 random_ok_kunitz.ids >pos_2.ids
+
+head -n 286416 random_sp_negatives.ids >neg_1.ids
+tail -n 286416 random_sp_negatives.ids >neg_2.ids
+wc neg_* pos_*
+
+wc sp_negatives.id
+wc sp_negatives.ids
+python3 removing_based_identifiers.py pos_1.ids uniprot_not-kunitz.fasta >pos_1.fasta
+python3 removing_based_identifiers.py pos_2.ids uniprot_not-kunitz.fasta >pos_2.fasta
+python3 removing_based_identifiers.py neg_1.ids uniprot_not-kunitz.fasta >neg_1.fasta
+python3 removing_based_identifiers.py neg_2.ids uniprot_not-kunitz.fasta >neg_2.fasta
+
+#HMM search for positive testing data
+ls *.hmm
+hmmsearch pdb_kunitz.hmm pos_1.fasta
+less pos_1.fasta
+less pos_1.ids
+less pos_2.fasta
+grep ">" pos_1.ids |wc
+python3 removing_based_identifiers.py pos_1.ids uniprot_not-kunitz.fasta > pos_1.fasta
+less pos_1.fasta
+
+ls *.hmm
+hmmsearch pdb_kunitz.hmm pos_1.fasta
+hmmsearch --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta |less
+
+less pos_1.out
+grep -v "^#" pos_1.out |cut -d " " -f1|wc
+hmmsearch --max --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta
+grep -v "^#" pos_1.out |cut -d " " -f1|wc
+
+#HMM search for pos_2.fasta
+hmmsearch --max --tblout pos_2.out pdb_kunitz.hmm pos_2.fasta
+grep -v "^#" pos_2.out |cut -d " " -f1|wc
+hmmsearch -Z 1000 --max --tblout pos_1.out pdb_kunitz.hmm pos_1.fasta
+hmmsearch -Z 1000 --max --tblout pos_2.out pdb_kunitz.hmm pos_2.fasta
+less pos_1.out
+
+grep -v "^#" pos_1.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t" >pos_1.class
+less pos_1.class
+
+grep -v "^#" pos_2.out |awk '{split($1,a,"\|"); print a[2],1,$5,$8}'  |tr " " "\t" >pos_2.class
+wc pos_2.class
+wc pos_1.class
+awk '{print $1}' pos_1.class |sort -u |wc
+awk '{print $1}' pos_2.class |sort -u |wc
+
+#HMM seach for negative testing data
+hmmsearch -Z 1000 --max --tblout neg_1.out pdb_kunitz.hmm neg_1.fasta
+hmmsearch -Z 1000 --max --tblout neg_2.out pdb_kunitz.hmm neg_2.fasta
+grep -v "^#" neg_1.out |wc
+grep -v "^#" neg_2.out |wc
+grep -v "^#" neg_1.out |awk '{split($1,a,"\|"); print a[2],0,$5,$8}'  |tr " " "\t" >neg_1.class
+grep -v "^#" neg_2.out |awk '{split($1,a,"\|"); print a[2],0,$5,$8}'  |tr " " "\t" >neg_2.class
+less neg_1.class
+less neg_2.class
+comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort)|wc
+comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort) |awk '{print $1"\t0\t10.0\t10.0"}'|less
+wc neg_1.ids
+wc neg_1.class
+comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort)|wc
+
+#reincluding negative data that model eliminated with an e value threshold of 10
+comm -23 <(sort neg_1.ids) <(cut -f 1 neg_1.class |sort) |awk '{print $1"\t0\t10.0\t10.0"}'>>neg_1.class
+wc neg_1.class
+wc neg_1.ids
+comm -23 <(sort neg_2.ids) <(cut -f 1 neg_2.class |sort) |awk '{print $1"\t0\t10.0\t10.0"}'>>neg_2.class
+wc neg_2.ids
+wc neg_2.class
+
+#combining pos_1, neg_1 and pos_2, neg_2
+cat pos_1.class neg_1.class >set_1.class
+cat pos_2.class neg_2.class >set_2.class
+
+#Applying a performance test to the model 
+
+for i in `seq 1 12 `; do python performance.py set_1.class 1e-$i; done
+for i in `seq 1 12 `; do python performance.py set_2.class 1e-$i ;done
+python performance.py set_1.class 5e-6
+python performance.py set_2.class 5e-6
+
+#best threshold 1e-6 is chosen based on the MCC and applied
+python performance.py  <(cat set_1.class set_2.class) 1e-6
+less pos_1.class
+
+#to determine missclassified structures classes sorted based on full sequence
+sort -gk 3 pos_1.class |less
+sort -grk 3 pos_1.class |less
+sort -grk 3 pos_2.class |less
+
+#to visualize performance metrics
+
+
+pip install matplotlib
+/bin/python3 /home/simay/Lab1project/matplotlib.py
+mv matplotlib.py resuly_plots.py
+pip install seaborn
+python3 /home/simay/Lab1project/results_plots.py
